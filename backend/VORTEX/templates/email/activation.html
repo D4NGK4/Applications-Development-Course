@@ -1,0 +1,130 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}Account activation on {{ site_name }}{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% blocktrans %}You're receiving this email because you need to finish activation process on {{ site_name }}.{% endblocktrans %}
+
+{% trans "Please go to the following page to activate account:" %}
+{{ protocol }}://{{ domain }}/{{ url|safe }}
+
+{% trans "Thanks for using our site!" %}
+
+{% blocktrans %}The {{ site_name }} team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to QuickEase - Activate Your Account</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Incompleeta:wght@400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+    /* Define CSS variables */
+    :root {
+      --font-incompleeta: 'Incompleeta', sans-serif;
+      --font-poppins: 'Poppins', sans-serif;
+    }
+
+    /* Apply styles */
+    body {
+      font-family: var(--font-poppins);
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: calc(100vw * 1900/1900);
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #060321;
+      text-align: center;
+      font-family: var(--font-poppins);
+    }
+
+    .logo {
+      color: #060321;
+      text-align: center;
+      font-family: var(--font-incompleeta);
+    }
+
+    p {
+      color: #666;
+      line-height: 1.5;
+      font-family: var(--font-poppins);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: calc(100vw * 15/1900) calc(100vw * 40/1900);
+      background-color: #060321;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-family: var(--font-poppins);
+      cursor: pointer;
+    }
+
+    .highlight {
+      color: #63a7ff;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .footer a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #333;
+    }
+    
+    .button-ctn{
+        display:flex;
+        justify-content:center
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">Quick<span class="highlight">Ease</span></h1>
+    <h1>Welcome ka <span class="highlight">Quickie!</span></h1>
+    <p>Dear,</p>
+    <p>Thank you for joining our community! We're thrilled to have you on board.</p>
+    <p>To get started, please activate your account by clicking the button below:</p>
+
+    <div class="button-ctn">
+      <p><a href="http://192.168.5.31:5173/activate/{{ uid }}/{{ token }}" class="btn">Activate Account</a></p>
+    </div>
+
+    <p>Once your account is activated, you'll have full access to all the features and services we offer.</p>
+    <p>If you have any questions or need assistance, don't hesitate to reach out to our friendly support team.</p>
+    <p>We look forward to an exciting journey together.</p>
+    <p>Best regards,<br>QuickEase</p>
+    <div class="footer">
+      &copy; QuickEase. All rights reserved.<br>
+      <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Unsubscribe</a><br>
+      Follow us: <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock html_body %}
